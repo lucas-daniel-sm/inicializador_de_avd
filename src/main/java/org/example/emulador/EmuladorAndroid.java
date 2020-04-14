@@ -2,8 +2,11 @@ package org.example.emulador;
 
 import javafx.scene.control.Alert;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.Arrays;
 import java.util.Scanner;
@@ -13,8 +16,15 @@ import java.util.function.Predicate;
 public class EmuladorAndroid {
     private final Path emulador;
 
-    public EmuladorAndroid(Path path) {
-        this.emulador = path;
+    public EmuladorAndroid(Path androidSdk) throws FileNotFoundException {
+
+        if (Files.notExists(androidSdk)) throw new FileNotFoundException("Android sdk não encontrado");
+
+        var localEmulador = androidSdk.resolve("emulator");
+        if (Files.notExists(localEmulador)) localEmulador = androidSdk.resolve("tools");
+
+        this.emulador = localEmulador.resolve("emulator.exe");
+        if (Files.notExists(this.emulador)) throw new FileNotFoundException("Emulador não encontrado");
     }
 
     public void executeAndListen(Consumer<String> onListening, Runnable onFinalize, boolean paralelo, String... params) {

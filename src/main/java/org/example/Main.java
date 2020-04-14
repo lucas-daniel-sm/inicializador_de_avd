@@ -5,7 +5,6 @@ import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import javafx.stage.WindowEvent;
 import org.example.janelas.Home;
 
 
@@ -16,11 +15,13 @@ public class Main extends Application {
     public void start(Stage stage) throws Exception {
         loader = new FXMLLoader(getClass().getResource("janelas/Home.fxml"));
         stage.setScene(new Scene(loader.load()));
-        stage.setOnCloseRequest(this::closeApp);
+        stage.setOnCloseRequest((e) -> closeApp());
+        Home controller = loader.getController();
+        controller.setFuncaoFecharApp(this::closeApp);
         stage.show();
     }
 
-    private void closeApp(WindowEvent windowEvent) {
+    public void closeApp() {
         Home controller = loader.getController();
         controller.finalizar();
         Platform.exit();
