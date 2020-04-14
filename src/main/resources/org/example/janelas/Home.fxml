@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity"
+      prefHeight="480.0" prefWidth="640.0" spacing="15.0" xmlns="http://javafx.com/javafx/11.0.1"
+      xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.janelas.Home">
+    <padding>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
+    </padding>
+    <StackPane>
+        <HBox minHeight="-Infinity" minWidth="-Infinity">
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Inicializador de AVD"/>
+        </HBox>
+        <HBox alignment="CENTER_RIGHT">
+            <JFXButton onAction="#atualizar" ripplerFill="#ffffff2c"
+                       style="-fx-background-color: black; -fx-text-fill: white; -fx-background-radius: 0;"
+                       text="ATUALIZAR">
+                <font>
+                    <Font name="System Bold" size="12.0"/>
+                </font>
+            </JFXButton>
+        </HBox>
+    </StackPane>
+    <ListView fx:id="listView" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
+              minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS"/>
+    <HBox alignment="CENTER_RIGHT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
+          minHeight="-Infinity" minWidth="-Infinity">
+        <JFXButton onAction="#iniciar" ripplerFill="WHITE"
+                   style="-fx-background-color: green; -fx-text-fill: white; -fx-background-radius: 0;" text="INICIAR">
+            <font>
+                <Font name="Consolas Bold" size="16.0"/>
+            </font>
+        </JFXButton>
+    </HBox>
+</VBox>
